@@ -540,10 +540,10 @@ nav ul li a:hover, nav ul li a:focus {
 .indicator {
     position: absolute;
     right: 0 !important;
-}
+}/*
 .pull {
     display: none;
-}
+}*/
 /* ==========================================================================
 Hero
 ========================================================================== */
@@ -585,6 +585,7 @@ Hero
     box-shadow: 0px 3px 0px 0px #309383;
     margin: 60px 0 0;
     font-weight: bold;
+    transition:none;
 }
 .learn-more-btn:hover, .learn-more-btn:focus {
     background: rgba(61, 201, 179, 0.6);
@@ -1042,3 +1043,122 @@ Waypoints
     background-position: 200px 10px;
     height: 100%;
 }
+
+/* ==========================================================================
+Fix that jank
+========================================================================== */
+.hero, .iphone {
+    transform: translateZ(0);
+}
+
+.swag, .subscribe {
+    background-attachment: initial;
+}
+
+html,
+body,
+.st-container,
+.st-pusher,
+.st-content {
+	width: 100%;
+}
+
+.st-content {
+	overflow-x: scroll;
+	background: #f3efe0;
+}
+
+.st-content,
+.st-content-inner {
+	position: relative;
+}
+
+.st-container {
+	position: relative;
+	overflow: hidden;
+}
+
+.st-pusher {
+	position: relative;
+	top: 0;
+	z-index: 99;
+	height: 100%;
+	-webkit-transition: -webkit-transform 0.5s;
+	transition: transform 0.5s;
+}
+
+.st-pusher::after {
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 0;
+	height: 0;
+	background: rgba(0,0,0,0.2);
+	content: '';
+	opacity: 0;
+	-webkit-transition: opacity 0.5s, width 0.1s 0.5s, height 0.1s 0.5s;
+	transition: opacity 0.5s, width 0.1s 0.5s, height 0.1s 0.5s;
+}
+
+.st-menu-open .st-pusher::after {
+	width: 100%;
+	height: 100%;
+	opacity: 1;
+	-webkit-transition: opacity 0.5s;
+	transition: opacity 0.5s;
+}
+
+.st-menu {
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 100;
+	visibility: hidden;
+	width: 100%;
+	height: 392px;
+	-webkit-transition: all 0.5s;
+	transition: all 0.5s;
+}
+
+.st-menu::after {
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(0,0,0,0.2);
+	content: '';
+	opacity: 1;
+	-webkit-transition: opacity 0.5s;
+	transition: opacity 0.5s;
+}
+
+.st-menu-open .st-menu::after {
+	width: 0;
+	height: 0;
+	opacity: 0;
+	-webkit-transition: opacity 0.5s, width 0.1s 0.5s, height 0.1s 0.5s;
+	transition: opacity 0.5s, width 0.1s 0.5s, height 0.1s 0.5s;
+}
+
+/* Effect 3: Push*/
+.st-effect-3.st-menu-open .st-pusher {
+	-webkit-transform: translate3d(0, 392px, 0);
+	transform: translate3d(0, 392px, 0);
+}
+
+.st-effect-3.st-menu {
+	-webkit-transform: translate3d(0, -100%, 0);
+	transform: translate3d(0, -100%, 0);
+}
+
+.st-effect-3.st-menu-open .st-effect-3.st-menu {
+	visibility: visible;
+	-webkit-transition: -webkit-transform 0.5s;
+	transition: transform 0.5s;
+}
+
+.st-effect-3.st-menu::after {
+	display: none;
+}
+
