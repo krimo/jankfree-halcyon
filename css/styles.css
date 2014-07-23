@@ -447,7 +447,6 @@ Navigation
 
 nav {
     background-color: #242830;
-    margin-top: -1px;
 }
 nav ul {
     list-style: none;
@@ -1055,6 +1054,12 @@ Fix that jank
     background-attachment: initial;
 }
 
+#nav-toggle {
+	top: 2em;
+	right: 2em;
+	z-index: 10;
+}
+
 html,
 body,
 .st-container,
@@ -1065,7 +1070,6 @@ body,
 
 .st-content {
 	overflow-x: scroll;
-	background: #f3efe0;
 }
 
 .st-content,
